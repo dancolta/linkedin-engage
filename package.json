@@ -24,7 +24,8 @@
     "voice:diff": "diff -u src/ai/voice-profile.md $HOME/.claude/skills/linkedin-engage/voice-profile.md || true",
     "voice:sync": "cp src/ai/voice-profile.md $HOME/.claude/skills/linkedin-engage/voice-profile.md && echo synced",
     "typecheck": "tsc --noEmit",
-    "clear": "tsx src/tools/clear-all.ts"
+    "clear": "tsx src/tools/clear-all.ts",
+    "queue:drafts": "tsx src/tools/queue-drafts.ts"
   },
   "dependencies": {
     "better-sqlite3": "^11.3.0",
