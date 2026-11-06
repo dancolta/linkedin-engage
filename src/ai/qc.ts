@@ -105,7 +105,7 @@ No prose, no markdown, no code fences. Example shape:
   try {
     const res = await execFileAsync(
       'claude',
-      ['-p', prompt, '--output-format', 'json', '--model', 'claude-sonnet-4-6'],
+      ['-p', prompt, '--output-format', 'json', '--model', 'claude-sonnet-4-6', '--tools', ''],
       { encoding: 'utf8', maxBuffer: 4 * 1024 * 1024, timeout: 180_000, env: CLEAN_ENV }
     );
     stdout = res.stdout;
