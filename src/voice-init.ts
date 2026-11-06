@@ -215,7 +215,7 @@ Output ONLY the filled-in voice profile markdown. No preamble, no commentary, no
   try {
     const res = await execFileAsync(
       'claude',
-      ['-p', meta, '--output-format', 'json', '--model', 'claude-sonnet-4-6'],
+      ['-p', meta, '--output-format', 'json', '--model', 'claude-sonnet-5-5'],
       { encoding: 'utf8', maxBuffer: 8 * 1024 * 1024, timeout: 180_000 }
     );
     const parsed = JSON.parse(res.stdout);

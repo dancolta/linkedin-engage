@@ -62,7 +62,7 @@ export async function draftBatch(posts: PostInput[]): Promise<string[]> {
       // A usage-limit hit is terminal for the whole run — surface it.
       if (err instanceof UsageLimitError || err instanceof AuthError) throw err;
       // Otherwise don't let one bad chunk sink the scan: SKIP this group and continue.
-      console.warn(`Chunk ${i / CHUNK_SIZE + 1} failed (${(err as Error).message.slice(0, 120)}) — skipping ${chunk.length} posts.`);
+      console.warn(`Chunk ${i / CHUNK_SIZE + 1} failed (${(err as Error).message.slice(-600)}) — skipping ${chunk.length} posts.`);
       out.push(...new Array(chunk.length).fill('SKIP'));
     }
   }
@@ -103,7 +103,7 @@ Return ONLY a JSON array of ${posts.length} strings (one per post in order). No 
   try {
     const res = await execFileAsync(
       'claude',
-      ['-p', prompt, '--output-format', 'json', '--model', 'claude-sonnet-4-6', '--tools', ''],
+      ['-p', prompt, '--output-format', 'json', '--model', 'claude-sonnet-5-5', '--tools', ''],
       { encoding: 'utf8', maxBuffer: 4 * 1024 * 1024, timeout: 420_000, env: CLEAN_ENV }
     );
     stdout = res.stdout;
